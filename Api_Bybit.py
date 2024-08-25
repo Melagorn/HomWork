@@ -1,7 +1,7 @@
 import requests
 
 
-class bybitapi:
+class bybit_api:
     base_url = "https://api.bybit.com"  # Базовый URL для всех запросов
 
     def make_request(self, endpoint, params=None):

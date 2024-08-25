@@ -38,11 +38,19 @@ class Socket_conn_Bybit(websocket.WebSocketApp):
         print(data)
 
 
-# URL и топики для подписки
-url = "wss://stream.bybit.com/v5/public/spot"
+# URL
+url = "wss://stream.bybit.com/v5/public/linear"
+
+# топики для подписки
 topic = [
-    "tickers.ADAUSDT",
-    "orderbook.50.ADAUSDT"
+    "kline.1.AXSUSDT",
+    "kline.1.SOLUSDT",
+    "orderbook.1.AXSUSDT",
+    "orderbook.1.SOLUSDT"
 ]
-# Запуск вебсокета в отдельном потоке
-threading.Thread(target=Socket_conn_Bybit, args=(url, topic)).start()
+# не работает!!
+# threading.Thread(target=Socket_conn_Bybit, args=(url, topic)).start()
+
+thread = threading.Thread(target=Socket_conn_Bybit, args=(url, topic))
+thread.start()
+thread.join()
