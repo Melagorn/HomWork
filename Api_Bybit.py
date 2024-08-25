@@ -1,19 +1,20 @@
 import requests
 
 
-def make_request(endpoint, params=None):
-    base_url = "https://api.bybit.com"
-    response = requests.get(base_url + endpoint, params=params)
-    result = response.json()
-    return result
+class bybitapi:
+    base_url = "https://api.bybit.com"  # Базовый URL для всех запросов
 
+    def make_request(self, endpoint, params=None):
+        response = requests.get(self.base_url + endpoint, params=params)
+        result = response.json()
+        return result
 
-if __name__ == '__main__':
-    endpoint_ticker = "/v5/market/tickers"
-    params = {
-        'category': 'linear',
-        'symbol': 'AXSUSDT'
-    }
-    ticker = make_request(endpoint_ticker, params)
-    ticker = ticker['result']['list'][0]
-    print("Ticker >>", ticker)
+    def get_orderbook(self, symbol, category):
+        endpoint = "/v5/market/orderbook"
+        params = {
+            'category': category,  # Категория передается c main.py
+            'symbol': symbol
+        }
+        data = self.make_request(endpoint, params)
+
+        return data
