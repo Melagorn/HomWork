@@ -1,4 +1,4 @@
-from Api_Bybit import bybitapi
+from Api_Bybit import bybit_api
 
 
 def find_largest_spread(api, trading_pairs, category):
@@ -26,11 +26,11 @@ def find_largest_spread(api, trading_pairs, category):
 
 
 if __name__ == '__main__':
-    api = bybitapi()
+    api = bybit_api()
 
     # Список из 10 любых торговых пар
-    trading_pairs = ["BTCUSDT", "ETHUSDT", "XRPUSDT", "LTCUSDT", "EOSUSDT",
-                     "BCHUSDT", "DOTUSDT", "ADAUSDT", "XLMUSDT", "LINKUSDT"]
+    trading_pairs = ["TONUSDT", "ETHUSDT", "XRPUSDT", "LTCUSDT", "EOSUSDT",
+                     "BCHUSDT", "DOTUSDT", "ADAUSDT", "XLMUSDT", "NOTUSDT"]
 
     category = "linear"
     # Ищем пару с самым большим спредом для указанной категории
